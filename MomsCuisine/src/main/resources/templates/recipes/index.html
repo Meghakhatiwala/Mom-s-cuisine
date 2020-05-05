@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+
+<header th:replace="fragments :: header"></header>
+
+<p th:unless = "${recipes} and ${recipes.size()}">No Recipes!</p>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Recipe Name</th>
+        <th>Ingredients</th>
+        <th>Preparation Method</th>
+    </tr>
+    </thead>
+    <tr th:each="recipe : ${recipes}">
+        <td><a th:text="${recipe.id}"</a></td>
+        <td><a th:text="${recipe.name}"</a></td>
+        <td><a th:text="${recipe.ingredients}"</a></td>
+        <td><a th:text="${recipe.preparationMethod}"</a></td>
+    </tr>
+</table>
+
+</body>
+</html>

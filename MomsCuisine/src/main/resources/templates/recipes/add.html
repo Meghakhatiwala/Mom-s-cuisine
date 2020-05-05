@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Recipe</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+<h1>Add Recipe</h1>
+
+<form class="needs-validation" method="post" action="/recipes/add">
+
+    <div class="col-3">
+     <input class="form-control" type="text" name="recipeName" placeholder="Recipe Name" required>
+   </div>
+
+    <div class="col-3">
+        <input class="form-control" type="text" name="ingredients" placeholder="Ingredients" required>
+    </div>
+
+    <div class="col-3">
+        <input class="form-control" type="text" name="preparationMethod" placeholder="Preparation Method" required>
+    </div>
+    <button class="btn btn-outline-success" type="submit">Add</button>
+</form>
+
+</body>
+</html>
