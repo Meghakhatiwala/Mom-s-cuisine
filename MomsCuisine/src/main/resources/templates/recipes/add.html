@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"  xmlns:th="http://www.thymeleaf.org/">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
     <title>Add Recipe</title>
@@ -15,7 +15,7 @@
 <form class="needs-validation" method="post" action="/recipes/add">
 
     <div class="col-3">
-     <input class="form-control" type="text" name="recipeName" placeholder="Recipe Name" required>
+     <input class="form-control" type="text" name="name" placeholder="Recipe Name" required>
    </div>
 
     <div class="col-3">
@@ -24,6 +24,16 @@
 
     <div class="col-3">
         <input class="form-control" type="text" name="preparationMethod" placeholder="Preparation Method" required>
+    </div>
+    <div class="form-group">
+       <label>Cuisine
+         <select th:field="${recipe.type}">
+             <option th:each="type : ${types}"
+                     th:value="${type}"
+                     th:text="${type.displayCuisine}"
+             ></option>
+         </select>
+       </label>
     </div>
     <button class="btn btn-outline-success" type="submit">Add</button>
 </form>

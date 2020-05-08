@@ -14,14 +14,16 @@
         <th>Recipe Name</th>
         <th>Ingredients</th>
         <th>Preparation Method</th>
+        <th>Cuisine</th>
     </tr>
     </thead>
     <tr th:each="recipe : ${recipes}">
-        <td><a th:text="${recipe.id}"</a></td>
-        <td><a th:text="${recipe.name}"</a></td>
-        <td><a th:text="${recipe.ingredients}"</a></td>
-        <td><a th:text="${recipe.preparationMethod}"</a></td>
-    </tr>
+        <td th:text="${recipe.id}"></td>
+        <td th:text="${recipe.name}"></td>
+        <td th:text="${recipe.ingredients}"></td>
+        <td th:text="${recipe.preparationMethod}"></td>
+        <td th:text="${recipe.type.displayCuisine}"></td>
+     </tr>
 </table>
 
 </body>

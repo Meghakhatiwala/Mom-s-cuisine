@@ -1,23 +1,40 @@
 package org.launchcode.MomsCuisine.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.Objects;
 
+@Entity
 public class Recipe {
+    @Id
+    @GeneratedValue
     private int id;
-    private static int nextId = 1;
 
+    @Size(min=3, max = 15)
+    @NotBlank
     private String name;
+
+    @Size(min = 5,max = 100)
+    @NotBlank
     private String ingredients;
+
+    @Size(max = 500)
+    @NotBlank
     private String preparationMethod;
 
+    private CuisineType type;
 
-    public Recipe(String name, String ingredients, String preparationMethod) {
+    public Recipe(String name, String ingredients, String preparationMethod, CuisineType type) {
         this.name = name;
         this.ingredients = ingredients;
         this.preparationMethod = preparationMethod;
-        this.id = nextId;
-        nextId++;
+        this.type = type;
     }
+
+    public Recipe (){}
 
     public int getId() {
         return id;
@@ -45,6 +62,14 @@ public class Recipe {
 
     public void setPreparationMethod(String preparationMethod) {
         this.preparationMethod = preparationMethod;
+    }
+
+    public CuisineType getType() {
+        return type;
+    }
+
+    public void setType(CuisineType type) {
+        this.type = type;
     }
 
     @Override
