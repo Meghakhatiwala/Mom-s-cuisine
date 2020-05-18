@@ -1,6 +1,6 @@
 package org.launchcode.MomsCuisine.models.dto;
 
-public class RegisterFormDTO {
+public class RegisterFormDTO extends LoginFormDTO {
 
     private String verifyPassword;
 

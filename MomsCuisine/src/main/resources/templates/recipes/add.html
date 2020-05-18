@@ -1,5 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<style>
+body {
+  background-image: url('https://images.unsplash.com/photo-1473093295043-cdd812d0e601?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+   background-size: cover;
+</style>
+
 <head>
     <meta charset="UTF-8">
     <title>Add Recipe</title>
@@ -15,15 +23,15 @@
 <form class="needs-validation" method="post" action="/recipes/add">
 
     <div class="col-3">
-     <input class="form-control" type="text" name="name" placeholder="Recipe Name" required>
+     <input class="form-control" type="text" name="name" placeholder="Recipe Name">
    </div>
 
     <div class="col-3">
-        <input class="form-control" type="text" name="ingredients" placeholder="Ingredients" required>
+        <input class="form-control" type="text" name="ingredients" placeholder="Ingredients">
     </div>
 
     <div class="col-3">
-        <input class="form-control" type="text" name="preparationMethod" placeholder="Preparation Method" required>
+        <input class="form-control" type="text" name="preparationMethod" placeholder="Preparation Method">
     </div>
     <div class="form-group">
        <label>Cuisine
@@ -35,7 +43,8 @@
          </select>
        </label>
     </div>
-    <button class="btn btn-outline-success" type="submit">Add</button>
+    <button class="btn btn-outline-success" type="submit" name="action" value="submit">Add</button>
+    <button class="btn btn-outline-success" type="submit" name="action" value="cancel">Cancel</button>
 </form>
 
 </body>

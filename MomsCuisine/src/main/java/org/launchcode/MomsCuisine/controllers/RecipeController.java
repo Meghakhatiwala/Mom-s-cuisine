@@ -36,10 +36,21 @@ public class RecipeController{
         return "recipes/add";
     }
 
-    @PostMapping("add")
+    /*@PostMapping("add")
     public String createAddRecipe(@ModelAttribute Recipe newRecipe) {
         recipeRepository.save(newRecipe);
         return "redirect:";
+    }*/
+
+    @RequestMapping(value="/add", method=RequestMethod.POST)
+    public String createAddRecipe(@ModelAttribute Recipe newRecipe, @RequestParam String action) {
+        if (action.equals("submit")) {
+            recipeRepository.save(newRecipe);
+            return "redirect:";
+        } else {
+            return "redirect:";
+        }
+
     }
 
     @GetMapping("delete")

@@ -2,12 +2,13 @@ package org.launchcode.MomsCuisine.models;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import javax.persistence.Entity;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-/*
+@Entity
 public class User extends AbstractEntity {
 
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -34,4 +35,3 @@ public class User extends AbstractEntity {
         return encoder.matches(password, pwHash);
     }
 }
-*/
