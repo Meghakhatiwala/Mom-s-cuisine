@@ -1,28 +1,35 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="fragments :: head"></head>
-<body class="container">
-
-<header th:replace="fragments :: header"></header>
-
-<form method="post">
-    <div class="form-group">
-        <label th:for="username">Username
-            <input class="form-control" th:field="${loginFormDTO.username}">
-        </label>
-        <p class="error" th:errors="${loginFormDTO.username}"></p>
-    </div>
-    <div class="form-group">
-        <label>Password
-            <input class="form-control" th:field="${loginFormDTO.password}" type="password">
-        </label>
-        <p class="error" th:errors="${loginFormDTO.password}"></p>
-    </div>
-
-    <input type="submit" class="btn btn-primary" value="Log In" />
-</form>
-
-<p>Don't have an account? <a href="/register">Register for one.</a></p>
-
+<head>
+    <title>Mom's Cuisine</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/styles.css">
+</head>
+<body>
+<section class="container-fluid bg">
+    <section class="row justify-content-center">
+      <section class="col-12 col-sm-6 col-md-3">
+          <header>
+            <h1 th:text="${title}">Mom's Cuisine</h1>
+          </header>
+          <form class="form-container" method="post">
+              <div class="form-group">
+                  <label th:for="username">Username
+                      <input class="form-control" th:field="${loginFormDTO.username}" placeholder="Enter email">
+                  </label>
+                  <p class="error" th:errors="${loginFormDTO.username}"></p>
+              </div>
+              <div class="form-group">
+                  <label>Password
+                      <input class="form-control" th:field="${loginFormDTO.password}" type="password" placeholder="Password">
+                  </label>
+                  <p class="error" th:errors="${loginFormDTO.password}"></p>
+              </div>
+              <input type="submit" class="btn btn-primary btn-block" value="Log In" />
+          </form>
+          <p>Don't have an account? <a href="/register">Register for one.</a></p>
+      </section>
+    </section>
+</section>
 </body>
 </html>
