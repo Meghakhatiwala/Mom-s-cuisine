@@ -1,19 +1,13 @@
 package org.launchcode.MomsCuisine.controllers;
 
-
-import org.launchcode.MomsCuisine.data.RecipeData;
 import org.launchcode.MomsCuisine.data.RecipeRepository;
+import org.launchcode.MomsCuisine.data.RecipeSearchRepository;
 import org.launchcode.MomsCuisine.models.CuisineType;
 import org.launchcode.MomsCuisine.models.Recipe;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.convert.support.GenericConversionService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.thymeleaf.model.IModel;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 @RequestMapping("recipes")
@@ -21,6 +15,9 @@ public class RecipeController{
 
     @Autowired
     private RecipeRepository recipeRepository;
+
+    @Autowired
+    private RecipeSearchRepository recipeSearchRepository;
 
     @GetMapping
     public String displayAllRecipe(Model model){
@@ -36,12 +33,6 @@ public class RecipeController{
         return "recipes/add";
     }
 
-    /*@PostMapping("add")
-    public String createAddRecipe(@ModelAttribute Recipe newRecipe) {
-        recipeRepository.save(newRecipe);
-        return "redirect:";
-    }*/
-
     @RequestMapping(value="/add", method=RequestMethod.POST)
     public String createAddRecipe(@ModelAttribute Recipe newRecipe, @RequestParam String action) {
         if (action.equals("submit")) {
@@ -50,7 +41,6 @@ public class RecipeController{
         } else {
             return "redirect:";
         }
-
     }
 
     @GetMapping("delete")
@@ -62,15 +52,28 @@ public class RecipeController{
 
     @PostMapping("delete")
     public String recipeDeleteForm(@RequestParam(required=false) int[] recipeIds){
-
         if (recipeIds != null) {
             for (int id : recipeIds) {
                 recipeRepository.deleteById(id);
             }
         }
-
            return "redirect:";
+    }
 
+    @GetMapping("search")
+    public String searchRecipeForm(Model model){
+       return "recipes/search";
+    }
+
+    @RequestMapping(value="/search", method=RequestMethod.POST)
+    public String SearchRecipe(Model model, @RequestParam String searchText) {
+        if (searchText.trim().equals("")) {
+            model.addAttribute("recipes", recipeRepository.findAll());
+            return "redirect:";
+        } else {
+            model.addAttribute("recipes", recipeSearchRepository.getRecipeDetails(searchText));
+            return "redirect:";
+        }
     }
 
 }

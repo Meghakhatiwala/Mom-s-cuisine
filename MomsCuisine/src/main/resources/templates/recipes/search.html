@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+</head>
+<style>
+    body{
+    background:url('https://cdn.pixabay.com/photo/2014/06/11/17/00/cook-366875__340.jpg') no-repeat;
+    width: 100%;
+    height: 100vh;
+    background-size: 100%;
+    class: responsive;
+    }
+    form{
+    width:500px;
+    margin: auto;
+    margin-top:250px;
+    }
+    .search{
+    width:80%;
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 10px;
+    }
+</style>
+<body>
+<h1 class="search-h1">Mom's Cuisine</h1>
+<header th:replace="fragments :: header"></header>
+
+<form method="post" action="/recipes/search">
+    <input type ="text" name="searchText" class="search" placeholder="Search recipe here">
+</form>
+
+</body>
+</html>
