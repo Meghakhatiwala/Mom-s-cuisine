@@ -19,6 +19,7 @@ public class RecipeController{
     @Autowired
     private RecipeSearchRepository recipeSearchRepository;
 
+
     @GetMapping
     public String displayAllRecipe(Model model){
         model.addAttribute("recipes", recipeRepository.findAll());
@@ -66,13 +67,14 @@ public class RecipeController{
     }
 
     @RequestMapping(value="/search", method=RequestMethod.POST)
-    public String SearchRecipe(Model model, @RequestParam String searchText) {
-        if (searchText.trim().equals("")) {
+    public String SearchRecipe(Model model, @RequestParam String searchText, @RequestParam String action) {
+        if (action.equals("search") && searchText.trim().equals("")) {
             model.addAttribute("recipes", recipeRepository.findAll());
-            return "redirect:";
+            return "recipes/index";
         } else {
+            //searchText = "Rice";
             model.addAttribute("recipes", recipeSearchRepository.getRecipeDetails(searchText));
-            return "redirect:";
+            return "recipes/index";
         }
     }
 
