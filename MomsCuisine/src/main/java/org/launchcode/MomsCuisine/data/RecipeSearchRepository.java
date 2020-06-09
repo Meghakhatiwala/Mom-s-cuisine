@@ -10,7 +10,7 @@ import java.util.List;
 
 @Repository
 public interface RecipeSearchRepository extends JpaRepository<Recipe,Integer> {
-    @Query(value="select r.* from recipe r where r.name like %:searchText% or r.ingredients like %:searchText% or r.preparation_method like %:searchText%",
+    @Query(value="select r.* from recipe r where UPPER(r.name) like %:searchText% or UPPER(r.ingredients) like %:searchText% or UPPER(r.preparation_method) like %:searchText%",
             nativeQuery = true)
     List<Recipe> getRecipeDetails(@Param("searchText") String searchText);
 }

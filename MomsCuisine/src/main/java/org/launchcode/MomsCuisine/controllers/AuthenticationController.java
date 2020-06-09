@@ -121,6 +121,7 @@ public class AuthenticationController {
 
         setUserInSession(request.getSession(), theUser);
 
+        //model.addAttribute("username", theUser.getUsername());
         return "redirect:";
     }
 

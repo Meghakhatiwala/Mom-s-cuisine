@@ -2,38 +2,50 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <style>
 body {
-  background-image: url('https://images.unsplash.com/photo-1504712598893-24159a89200e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjQyMjc5fQ&auto=format&fit=crop&w=751&q=80');
+  background-color: white;
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+.grid-container {
+  background-image: url('https://images.unsplash.com/photo-1488477181946-6428a0291777?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: grid;
+  grid-column-gap: 20px;
+  grid-template-columns: auto auto auto;
+  padding: 10px;
+}
+
+.grid-item {
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  border-radius: 10px;
+  padding: 20px;
+  font-size: 20px;
+}
 </style>
 <head th:replace="fragments :: head"></head>
-<body class="container">
+<body class="container-fluid">
 
-<h1>Mom's Cuisine</h1>
+<h1 style="color:red; text-align:center"><i>Mom's Cuisine</i></h1>
 
 <header th:replace="fragments :: header"></header>
 
 <p th:unless = "${recipes} and ${recipes.size()}">No Recipes!</p>
 
-<table class="table table-striped">
-    <thead>
-    <tr>
-        <th>ID</th>
-        <th>Recipe Name</th>
-        <th>Ingredients</th>
-        <th>Preparation Method</th>
-        <th>Cuisine</th>
-    </tr>
-    </thead>
-    <tr th:each="recipe : ${recipes}">
-        <td th:text="${recipe.id}"></td>
-        <td th:text="${recipe.name}"></td>
-        <td th:text="${recipe.ingredients}"></td>
-        <td th:text="${recipe.preparationMethod}"></td>
-        <td th:text="${recipe.type.displayCuisine}"></td>
-     </tr>
-</table>
-
+<form class="grid-container">
+<div class="col" th:each="recipe : ${recipes}">
+    <div class="grid-item">
+        <p><b>Recipe Name:</b></p>
+        <ul th:text="${recipe.name}"></ul>
+        <p><b>Ingredients:</b></p>
+        <ul th:text="${recipe.ingredients}"></ul>
+        <p><b>Preparation method:</b></p>
+        <ul th:text="${recipe.preparationMethod}"></ul>
+        <p><b>Cuisine:</b></p>
+        <ul th:text="${recipe.type.displayCuisine}"></ul>
+    </div>
+</div>
+</form>
 </body>
 </html>

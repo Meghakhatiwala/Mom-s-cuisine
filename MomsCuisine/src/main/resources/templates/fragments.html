@@ -14,15 +14,12 @@
 
 <body>
 <header th:fragment="header">
-    <h1 th:text="${title}">Mom's Cuisine</h1>
+    <h1 th:text="${title}"><i>Mom's Cuisine</i></h1>
     <ul class="nav">
-        <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="/recipes">All Recipes</a></li>
-        <li class="nav-item"><a class="nav-link" href="/recipes/add">Add Recipe</a></li>
-        <li class="nav-item"><a class="nav-link" href="/recipes/delete">Delete Recipe</a></li>
-        <li class="nav-item"><a class="nav-link" href="/recipes/search">Search Recipe</a></li>
-        <li class="nav-item"><a class="nav-link" href="/login">Sign in</a></li>
-        <li class="nav-item"><a class="nav-link" href="/logout">Sign out</a></li>
+        <li class="nav-item"><a class="nav-link" href="/recipes/add"><b>Add Recipe</b></a></li>
+        <li class="nav-item"><a class="nav-link" href="/recipes/search"><b>Search Recipe</b></a></li>
+        <li class="nav-item"><a class="nav-link" href="/login"><b>Sign in</b></a></li>
+        <li class="nav-item"><a class="nav-link" href="/logout"><b>Sign out</b></a></li>
     </ul>
 </header>
 

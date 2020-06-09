@@ -72,8 +72,7 @@ public class RecipeController{
             model.addAttribute("recipes", recipeRepository.findAll());
             return "recipes/index";
         } else {
-            //searchText = "Rice";
-            model.addAttribute("recipes", recipeSearchRepository.getRecipeDetails(searchText));
+            model.addAttribute("recipes", recipeSearchRepository.getRecipeDetails(searchText.toUpperCase()));
             return "recipes/index";
         }
     }
